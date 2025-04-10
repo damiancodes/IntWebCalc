@@ -1,7 +1,5 @@
 package com.intentcalcweb.ui.theme.Screens.calc
 
-
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,12 +30,14 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun Calc_Screen(modifier: Modifier = Modifier) {
+fun Calc_Screen(navcontroller: NavHostController) {
     var firstnum by remember { mutableStateOf(TextFieldValue("")) }
     var secondnum by remember { mutableStateOf(TextFieldValue("")) }
-    var text by remember { mutableStateOf(TextFieldValue) }
+    var answer by remember { mutableStateOf("") }
 
     Column(
         verticalArrangement = Arrangement.Top,
@@ -48,14 +48,16 @@ fun Calc_Screen(modifier: Modifier = Modifier) {
             .background(color = Color.LightGray)
     ) {
 
-
         Text(
-            text = "Answer",
+            text = "Answer: $answer",
             color = Color.Red,
             fontFamily = FontFamily.Serif,
             fontSize = 30.sp,
             fontStyle = FontStyle.Italic
         )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         OutlinedTextField(
             value = firstnum,
             onValueChange = { firstnum = it },
@@ -66,13 +68,13 @@ fun Calc_Screen(modifier: Modifier = Modifier) {
                 )
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-
-
         )
-        Spacer(modifier = Modifier.height(50.dp))
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         OutlinedTextField(
-            value = firstnum,
-            onValueChange = { firstnum = it },
+            value = secondnum,  
+            onValueChange = { secondnum = it },
             label = {
                 Text(
                     text = "Enter second No.",
@@ -80,15 +82,28 @@ fun Calc_Screen(modifier: Modifier = Modifier) {
                 )
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-
-
         )
+
         Spacer(modifier = Modifier.height(50.dp))
+
         Row {
             OutlinedButton(
-                onClick = { TODO() },
+                onClick = {
+                    val myfirstnum = firstnum.text.trim()
+                    val mysecondnum = secondnum.text.trim()
+                    if (myfirstnum.isEmpty() || mysecondnum.isEmpty()){
+                        answer = "Please input values"
+                    } else {
+                        try {
+                            val myanswer = myfirstnum.toDouble() + mysecondnum.toDouble()
+                            answer = myanswer.toString()
+                        } catch (e: Exception) {
+                            answer = "Invalid input"
+                        }
+                    }
+                },
                 modifier = Modifier.width(50.dp),
-                colors = ButtonDefaults.buttonColors(_root_ide_package_.androidx.compose.ui.graphics.Color.Gray),
+                colors = ButtonDefaults.buttonColors(Color.Magenta),
                 shape = RoundedCornerShape(16.dp)
             ) {
                 Text(
@@ -96,11 +111,26 @@ fun Calc_Screen(modifier: Modifier = Modifier) {
                     fontSize = 30.sp
                 )
             }
+
             Spacer(modifier = Modifier.width(40.dp))
+
             OutlinedButton(
-                onClick = { TODO() },
+                onClick = {
+                    val myfirstnum = firstnum.text.trim()
+                    val mysecondnum = secondnum.text.trim()
+                    if (myfirstnum.isEmpty() || mysecondnum.isEmpty()){
+                        answer = "Please input values"
+                    } else {
+                        try {
+                            val myanswer = myfirstnum.toDouble() - mysecondnum.toDouble()
+                            answer = myanswer.toString()
+                        } catch (e: Exception) {
+                            answer = "Invalid input"
+                        }
+                    }
+                },
                 modifier = Modifier.width(50.dp),
-                colors = ButtonDefaults.buttonColors(_root_ide_package_.androidx.compose.ui.graphics.Color.Gray),
+                colors = ButtonDefaults.buttonColors(Color.Magenta),
                 shape = RoundedCornerShape(16.dp)
             ) {
                 Text(
@@ -108,11 +138,26 @@ fun Calc_Screen(modifier: Modifier = Modifier) {
                     fontSize = 30.sp
                 )
             }
+
             Spacer(modifier = Modifier.width(40.dp))
+
             OutlinedButton(
-                onClick = { TODO() },
+                onClick = {
+                    val myfirstnum = firstnum.text.trim()
+                    val mysecondnum = secondnum.text.trim()
+                    if (myfirstnum.isEmpty() || mysecondnum.isEmpty()){
+                        answer = "Please input values"
+                    } else {
+                        try {
+                            val myanswer = myfirstnum.toDouble() * mysecondnum.toDouble()
+                            answer = myanswer.toString()
+                        } catch (e: Exception) {
+                            answer = "Invalid input"
+                        }
+                    }
+                },
                 modifier = Modifier.width(50.dp),
-                colors = ButtonDefaults.buttonColors(_root_ide_package_.androidx.compose.ui.graphics.Color.Gray),
+                colors = ButtonDefaults.buttonColors(Color.Magenta),
                 shape = RoundedCornerShape(16.dp)
             ) {
                 Text(
@@ -120,11 +165,30 @@ fun Calc_Screen(modifier: Modifier = Modifier) {
                     fontSize = 30.sp
                 )
             }
+
             Spacer(modifier = Modifier.width(40.dp))
+
             OutlinedButton(
-                onClick = { TODO() },
+                onClick = {
+                    val myfirstnum = firstnum.text.trim()
+                    val mysecondnum = secondnum.text.trim()
+                    if (myfirstnum.isEmpty() || mysecondnum.isEmpty()){
+                        answer = "Please input values"
+                    } else {
+                        try {
+                            if (mysecondnum.toDouble() == 0.0) {
+                                answer = "Cannot divide by zero"
+                            } else {
+                                val myanswer = myfirstnum.toDouble() / mysecondnum.toDouble()
+                                answer = myanswer.toString()
+                            }
+                        } catch (e: Exception) {
+                            answer = "Invalid input"
+                        }
+                    }
+                },
                 modifier = Modifier.width(50.dp),
-                colors = ButtonDefaults.buttonColors(_root_ide_package_.androidx.compose.ui.graphics.Color.Gray),
+                colors = ButtonDefaults.buttonColors(Color.Magenta),
                 shape = RoundedCornerShape(16.dp)
             ) {
                 Text(
@@ -133,14 +197,11 @@ fun Calc_Screen(modifier: Modifier = Modifier) {
                 )
             }
         }
-
     }
 }
-
 
 @Preview
 @Composable
 private fun Calc_preview() {
-    Calc_Screen()
-
+    Calc_Screen(rememberNavController())
 }
