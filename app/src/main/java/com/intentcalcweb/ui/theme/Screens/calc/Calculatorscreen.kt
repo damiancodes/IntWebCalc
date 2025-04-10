@@ -64,7 +64,8 @@ fun Calc_Screen(navcontroller: NavHostController) {
             label = {
                 Text(
                     text = "Enter first No.",
-                    fontSize = 30.sp
+                    fontSize = 30.sp,
+                    color = Color.Black
                 )
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -78,7 +79,8 @@ fun Calc_Screen(navcontroller: NavHostController) {
             label = {
                 Text(
                     text = "Enter second No.",
-                    fontSize = 30.sp
+                    fontSize = 30.sp,
+                    color = Color.Black
                 )
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -108,7 +110,8 @@ fun Calc_Screen(navcontroller: NavHostController) {
             ) {
                 Text(
                     text = "+",
-                    fontSize = 30.sp
+                    fontSize = 30.sp,
+                    color = Color.Black
                 )
             }
 
@@ -135,7 +138,8 @@ fun Calc_Screen(navcontroller: NavHostController) {
             ) {
                 Text(
                     text = "-",
-                    fontSize = 30.sp
+                    fontSize = 30.sp,
+                    color = Color.Black
                 )
             }
 
@@ -162,7 +166,8 @@ fun Calc_Screen(navcontroller: NavHostController) {
             ) {
                 Text(
                     text = "*",
-                    fontSize = 30.sp
+                    fontSize = 30.sp,
+                    color = Color.Black
                 )
             }
 
@@ -193,7 +198,9 @@ fun Calc_Screen(navcontroller: NavHostController) {
             ) {
                 Text(
                     text = "/",
-                    fontSize = 30.sp
+                    fontSize = 30.sp,
+                    color = Color.Black
+
                 )
             }
         }

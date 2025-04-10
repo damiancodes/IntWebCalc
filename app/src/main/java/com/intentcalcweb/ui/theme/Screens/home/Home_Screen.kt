@@ -29,6 +29,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.intentcalcweb.navigation.ROUTE_CALC
 import com.intentcalcweb.navigation.ROUTE_INTENT
+import com.intentcalcweb.navigation.ROUTE_WEB
 
 // Define a modern color palette
 private val backgroundColor = Color(0xFFF5F5F5)
@@ -78,7 +79,7 @@ fun Home_Screen(navcontroller: NavHostController) {
 
         // Calculator Button
         Button(
-            onClick = { navcontroller.navigate(ROUTE_INTENT) },
+            onClick = { navcontroller.navigate(ROUTE_CALC) },
             modifier = Modifier
                 .width(300.dp)
                 .height(60.dp),
@@ -98,7 +99,7 @@ fun Home_Screen(navcontroller: NavHostController) {
 
 
         Button(
-            onClick = { /* TODO */ },
+            onClick = { navcontroller.navigate(ROUTE_INTENT) },
             modifier = Modifier
                 .width(300.dp)
                 .height(60.dp),
@@ -118,7 +119,7 @@ fun Home_Screen(navcontroller: NavHostController) {
 
 
         Button(
-            onClick = { /* TODO */ },
+            onClick = { navcontroller.navigate(ROUTE_WEB) },
             modifier = Modifier
                 .width(300.dp)
                 .height(60.dp),
