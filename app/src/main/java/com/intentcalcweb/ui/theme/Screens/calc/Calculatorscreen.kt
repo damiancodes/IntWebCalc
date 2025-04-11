@@ -40,11 +40,11 @@ fun Calc_Screen(navcontroller: NavHostController) {
     var answer by remember { mutableStateOf("") }
 
     Column(
-        verticalArrangement = Arrangement.Top,
+        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(10.dp)
             .background(color = Color.LightGray)
     ) {
 

@@ -67,7 +67,7 @@ fun Home_Screen(navcontroller: NavHostController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = " ",
+            text = " start using our app",
             fontSize = 18.sp,
             fontFamily = FontFamily.Default,
             fontWeight = FontWeight.Medium,
@@ -97,7 +97,7 @@ fun Home_Screen(navcontroller: NavHostController) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-
+//intent button
         Button(
             onClick = { navcontroller.navigate(ROUTE_INTENT) },
             modifier = Modifier
