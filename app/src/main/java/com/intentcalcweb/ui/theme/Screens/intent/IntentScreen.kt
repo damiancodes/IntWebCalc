@@ -40,20 +40,27 @@ fun Intent_Screen(navcontroller: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color.LightGray)
+            .background(color = Color(0xFFF5F5F5))
     ) {
         Text(
-            text = "Intent Screen",
-            color = Color.Red,
-            fontFamily = FontFamily.Serif,
-            fontSize = 30.sp,
+            text = "Intent Actions",
+            color = Color(0xFFFF5722),
+            fontFamily = FontFamily.SansSerif,
+            fontSize = 36.sp,
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Text(
+            text = "Tap any button to perform an action",
+            color = Color(0xFF757575), // Dark gray
+            fontFamily = FontFamily.Default,
+            fontSize = 16.sp,
+        )
+
+        Spacer(modifier = Modifier.height(40.dp))
 
         OutlinedButton(
             onClick = {
-                val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+254700532551"))
+                val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+918511812660"))
 
                 if (ContextCompat.checkSelfPermission(
                         context,
@@ -79,7 +86,7 @@ fun Intent_Screen(navcontroller: NavHostController) {
             )
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedButton(
             onClick = {
@@ -103,7 +110,7 @@ fun Intent_Screen(navcontroller: NavHostController) {
 
         OutlinedButton(
             onClick = {
-                val uri = Uri.parse("smsto:0700532551")
+                val uri = Uri.parse("smsto:07456789")
                 val intent = Intent(Intent.ACTION_SENDTO, uri)
                 intent.putExtra("sms_body", "How is todays weather")
                 context.startActivity(intent)
